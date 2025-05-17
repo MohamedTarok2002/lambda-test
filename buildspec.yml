@@ -4,10 +4,14 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - zip lambda-deployment-package.zip lambda.py
+      - cd lambda-test
+      - zip -r ../lambda-deployment-package.zip .
+
+      
   post_build:
     commands:
       - echo Build completed on `date`
+      - cd lambda-test
 
 artifacts:
   files:
