@@ -4,7 +4,6 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - cd lambda-test
       - zip -r ../lambda-deployment-package.zip .
       - unzip -l ../lambda-deployment-package.zip   # <-- Add this here to list ZIP content
       
