@@ -1,17 +1,14 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      python: 3.9
-    commands:
-      - pip install -r requirements.txt -t .
   build:
     commands:
-      - zip -r function.zip .
+      - echo Build started on `date`
+      - zip lambda-deployment-package.zip lambda.py
   post_build:
     commands:
-      - aws lambda update-function-code --function-name lambda-test-func --zip-file fileb://function.zip
+      - echo Build completed on `date`
+
 artifacts:
   files:
-    - function.zip
+    - lambda-deployment-package.zip
