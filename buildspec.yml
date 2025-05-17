@@ -4,9 +4,9 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - zip -r ../lambda-deployment-package.zip .
-      - unzip -l ../lambda-deployment-package.zip   # <-- Add this here to list ZIP content
-      
+      - zip -r lambda-deployment-package.zip lambda.py buildspec.yml
+      - unzip -l lambda-deployment-package.zip
+
   post_build:
     commands:
       - echo Build completed on `date`
