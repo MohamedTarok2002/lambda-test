@@ -3,15 +3,10 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo Build started on `date`
-      # No zip command here, just keep the files as is
-      - ls -l  # Optional: list files to verify
-
+      - zip -r function.zip .
   post_build:
     commands:
-      - echo Build completed on `date`
-
+      - aws lambda update-function-code --function-name lambda-test-func --zip-file fileb://function.zip
 artifacts:
   files:
-    - lambda.py
-    - buildspec.yml
+    - function.zip
