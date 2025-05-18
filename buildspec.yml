@@ -3,8 +3,6 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Copying lambda.py into build directory"
-      - cp ../../../lambda.py .
       - echo "Zipping lambda.py"
       - zip function.zip lambda.py
 
