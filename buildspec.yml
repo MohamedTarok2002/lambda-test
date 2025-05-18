@@ -1,20 +1,17 @@
 version: 0.2
 
-env:
-  variables:
-    TestVar: "123"
-  git-credential-helper: yes
-
 phases:
-  pre_build:
+ build:
     commands:
-      - echo "Pre build command"
+      - echo Build started on `date`
+      - echo Packaging Lambda function...
+      # Zip the lambda.py file (and any dependencies if applicable)
+      - zip lambda.zip lambda.py
+ post_build:
+    commands:
+      - echo Build completed on `date`
+      - ls -l  # List files to verify lambda.zip exists
 
-  build:
-    commands:
-      - echo "Build started on `date`"
-
-  post_build:
-    commands:
-      - echo "Build post_build on `date`"
-      - bash buildspec_update_lambda_code.sh
+artifacts:
+  files:
+    - lambda.zip
