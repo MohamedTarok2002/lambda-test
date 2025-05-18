@@ -3,8 +3,11 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Zipping lambda.py from parent directory with no folder structure"
-      - zip -j function.zip ../../lambda.py
+      - echo "Copying lambda.py into build directory"
+      - cp ../../lambda.py .
+      - echo "Zipping lambda.py"
+      - zip function.zip lambda.py
+
   post_build:
     commands:
       - echo "Updating Lambda function code"
