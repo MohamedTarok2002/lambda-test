@@ -3,10 +3,14 @@ version: 0.2
 phases:
   build:
     commands:
-      - zip -r function.zip .
+      - echo "Zipping lambda.py for deployment"
+      # Zip only lambda.py to avoid including buildspec.yml or other files
+      - zip function.zip lambda.py
   post_build:
     commands:
-      - aws lambda update-function-code --function-name lambda-test-func --zip-file fileb://function.zip
+      - echo "Updating Lambda function code"
+      - aws lambda update-function-code --function-name lambda-test-func --zip-file fileb://function.zip --region us-east-1
+
 artifacts:
   files:
     - function.zip
