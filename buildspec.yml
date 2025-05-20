@@ -7,7 +7,7 @@ phases:
   build:
     commands:
       - echo Packaging Lambda function
-      - zip lambdazip lambda.py
+      - zip lambda lambda.py
 artifacts:
   files:
     - lambda.zip
