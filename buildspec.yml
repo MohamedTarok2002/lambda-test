@@ -1,17 +1,13 @@
 version: 0.2
 
 phases:
- build:
+  install:
+    runtime-versions:
+      python: 3.9
+  build:
     commands:
-      - echo Build started on `date`
-      - echo Packaging Lambda function...
-      # Zip the lambda.py file (and any dependencies if applicable)
-      - zip lambda.zip lambda.py
- post_build:
-    commands:
-      - echo Build completed on `date`
-      - ls -l  # List files to verify lambda.zip exists
-
+      - echo Packaging Lambda function
+      - zip lambdazip lambda.py
 artifacts:
   files:
     - lambda.zip
